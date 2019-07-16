@@ -1,0 +1,21 @@
+﻿           @model IEnumerable<HotelManagement.Models.Roommodel>
+
+
+@{
+    ViewBag.Title = "Roomdetails";
+}
+
+<h2>Roomdetails</h2>
+
+@TempData["Roomdetails"];
+@foreach (var rm in TempData["Roomdetails"] as IList<HotelManagement.Models.Roommodel>)
+{ 
+    <ul><li>
+            <p>@Html.DisplayFor(model => rm.id)  </p>
+        <p>@Html.DisplayFor(model => rm.RoomType)  </p>
+         
+            <p>@Html.DisplayFor(model => rm.num_rooms)  </p>
+    </li>
+    </ul>
+}
+  @Html.ActionLink("Back to form", "AddRoom")  

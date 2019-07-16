@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Viewdetails";
+   
+}
+
+<h2>Result</h2>
+<p>
+    @TempData["Roomdetails"];
+    <table>
+        <tr>
+            <td>Room type</td><td>Room ID</td> <td>Total Price</td><td>Quantity of Room</td>
+        </tr>
+        @foreach (var item in TempData["Roomdetails"] as IList<HotelM1.Models.RoomModel>)
+        {
+            
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomType)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.R_id)</td>
+                  
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <a href="http://localhost:52993/Room/Edit?id=@item.R_id">Edit</a>
+                </td>
+                <td>
+                    <a href="http://localhost:52993/Room/delete?id=@item.R_id"> Delete</a></td>
+            </tr>
+        }
+    </table>
+</p>
+<div>
+    @Html.ActionLink("Back to form", "Create")
+
+</div>

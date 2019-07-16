@@ -1,0 +1,23 @@
+﻿@model MvcApplication1.Models.Room
+
+
+@{
+    ViewBag.Title = "RoomBook";
+  
+}
+
+<h2>Roompage</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.Label("No._of_rooms")
+    @Html.TextBox("No. of rooms")
+    @Html.Label("Type_of_rooms")
+    @Html.TextBox("Type of rooms")
+
+
+
+    <input type="submit" value="Save" />
+}
+
