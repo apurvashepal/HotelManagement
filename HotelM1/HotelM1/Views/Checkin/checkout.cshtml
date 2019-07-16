@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "checkout";
+}
+
+<h2>checkout</h2>
+
+
+
+<p>
+    @TempData["Guestdetails"];
+    <table>
+        <tr>
+            <td>Guestname</td>
+            <td>Contact Number</td>
+            <td>Adress</td>
+            <td>Room type</td>
+
+            <td>Total Price</td>
+            <td>Quantity of Room</td>
+            <td>No. of days(stay)</td>
+        </tr>
+        @foreach (var item in TempData["Guestdetails"] as IList<HotelM1.Models.Checkinmodel>)
+        {
+
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GuestName)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.contact)</td>
+                <td>@Html.DisplayFor(modelItem => item.address)</td>
+                <td>@Html.DisplayFor(modelItem => item.RoomType)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Total_days)</td>
+            </tr>
+        }
+    </table>
+    <a href="http://localhost:52993/Checkin/checkout"</p>
+<div>
+
+</div>

@@ -1,0 +1,32 @@
+﻿@model HotelM1.Models.Checkinmodel
+@{
+    ViewBag.Title = "checkin";
+}
+
+<h2>checkin</h2>
+@using (Html.BeginForm("checkin", "Checkin", FormMethod.Post))
+{ 
+  <p>Guestname</p>  
+@Html.TextBoxFor(model => model.GuestName)<br />
+    <p> Contact number</p>
+@Html.TextBoxFor(model => model.contact) <br />
+    <p>Address</p>
+@Html.TextBoxFor(model => model.address)<br />
+    <p>Number of rooms Required</p>
+@Html.TextBoxFor(model => model.quantity)<br />
+    <p>No.of Days for Stay</p>
+@Html.TextBoxFor(model => model.Total_days)
+
+@Html.DropDownListFor(model => model.RoomType, new List<SelectListItem>
+                   { new SelectListItem{Text="Standard", Value="Standard"},
+                     new SelectListItem{Text="Premium", Value="Premium"},
+                     new SelectListItem{Text="Delux", Value="Delux"}}, "Please select")
+
+
+<input type="submit" value="Savedata" />
+    
+  
+    
+    
+}
+@Html.ActionLink("Viewcheckin", "check in records")
