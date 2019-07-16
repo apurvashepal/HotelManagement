@@ -1,0 +1,186 @@
+﻿@model WebApp.Models.EmployeeDetail
+
+@{
+    ViewBag.Title = "View1";
+}
+
+<h2>View1</h2>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<script>
+    var geturi="http://localhost:51284/api/GetEmployeeDets"
+  $(document).ready(function () {
+      $("#Details").click(function (e) {
+          
+            $.ajax({
+                url: geturi ,
+                type: "GET",
+                datatype: "json",
+                success: function (result) {
+                    $.each(result, function (key, item) {
+                        document.write(  '<table>'+
+                          '<tr>' + '<td>' + item.Id + '</td>' + '<td>' + item.Name + '</td>' + '<td>' + item.Experiance + '</td>' +'<td>'+ item.Department +'</td>' + '</tr>'
+                          +'</table>');
+                    })
+                }
+            });
+        });
+  });
+
+
+
+
+
+
+  $(document).ready(function () {
+      $("#view").click(function () {
+          var empid = $('#id1').val()
+          $.ajax({
+              url: 'http://localhost:51284/api/GetEmployeeDet?ID' + '=' + empid,
+              type: 'GET',
+              dataType: 'json',
+              data: { "": "" },
+              success: function (data, textStatus, xhr) {
+                  console.log(data);
+              },
+              error: function (xhr, textStatus, errorThrown) {
+                  console.log('Error in Operation');
+              }
+          });
+          });
+      });
+
+
+
+
+  $(document).ready(function () {
+      $("#Add").click(function () {
+          var emp = new Object();
+          emp.Id = $('#id2').val();
+          emp.Name = $('#name').val();
+          emp.Experiance = $('#experiance').val();
+          emp.Department = $('#department').val();
+          $.post('http://localhost:51284/api/PostEmployeeDet', emp, function (data) {
+              console.log(emp);
+          });
+      });
+  });
+
+
+
+
+
+ $(document).ready(function () {
+     
+      $("#Update").click(function () {
+       var emp = new Object();
+          emp.Id = $('#id3').val();
+          emp.Name = $('#name').val();
+          emp.Experiance = $('#experiance').val();
+          emp.Department = $('#department').val();
+       //   console.log(emp.Id);
+        //  var empid =  $('#id3').val();
+          $.ajax({
+              url: 'http://localhost:51284/api/PutEmployeeDet?Id' + '=' + emp.Id ,
+              type: 'PUT',
+              dataType: 'json',
+              data: JSON.stringify(emp),
+              
+              success: function (data,data) {
+                  console.log(data);
+                  alert('Updated Successfully');
+                 
+              },
+              error: function () {
+                  console.log(emp.Id);
+                  console.log('Error in Operation');
+              }
+          });
+      });
+  });
+
+
+
+
+   
+
+        $(document).ready(function () {
+            $("#Delete").click(function () {
+                var empid = $('#id4').val()
+                $.ajax({
+                    url: 'http://localhost:51284/api/DeleteEmployeeDet?ID' + '=' + empid,
+                    type: 'DELETE',
+                    dataType: 'json',
+                    data: { "": "" },
+                    success: function (data, textStatus, xhr) {
+                        console.log(data);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error in Operation');
+                    }
+                });
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+</script>
+<form >
+    <input type="button" id="Details" value="details"  />
+
+</form>
+
+<form>
+    <h5>Single Employee details</h5>
+
+    <input type="text" placeholder="UserId" id="id1" />
+    <input type="button" id="View" value="View_employee" />
+
+</form>
+
+    <form>
+        <h5>To add Employee</h5>
+        <input type="text" placeholder="UserId" id="id2" />
+        <input type="text" placeholder="Name" id="name" />
+        <input type="text" placeholder="Experiance" id="experiance" />
+        <input type="text" placeholder="Department" id="department" />
+
+
+
+        <input type="button" id="Add" value="Add_employee" />
+
+    </form>
+
+  
+
+    <form>
+        <h5>
+            To update
+        </h5>
+        <input type="text" placeholder="UserId" id="id3" />
+
+        <input type="text" placeholder="Name" id="name" />
+        <input type="text" placeholder="Experiance" id="experiance" />
+        <input type="text" placeholder="Department" id="department" />
+
+
+
+        <input type="button" id="Update" value="Update_employee" />
+
+    </form>
+
+<form>
+    <h5>
+        To Delete
+    </h5>
+    <input type="text" placeholder="UserId" id="id4" />
+    <input type="button" id="Delete" value="Delete" />
+</form>
