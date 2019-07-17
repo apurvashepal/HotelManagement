@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<HotelManagement.Models.RoomDetail>
+@using HotelManagement.Models
+@{
+    ViewBag.Title = "Viewdetails";
+}
+
+<h2>Viewdetails</h2>
+<p>
+    @TempData["Roomdetails"];
+    <table>
+        <tr>
+            <td>Room type</td>
+            <td>Room ID</td>
+            <td>Total Price</td>
+
+        </tr>
+        @foreach (RoomDetail Rd in @Model)
+        {
+
+
+            <tr>
+
+                <td>@Html.DisplayFor(modelItem => Rd.R_Id)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => Rd.RoomType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Rd.Price)
+                </td>
+
+                <td>
+
+                    <a href="http://localhost:55207/Room/Edit?id=@Rd.R_Id">Edit</a>
+                </td>
+                <td>
+                    <a href="http://localhost:55207/Room/delete?id=@Rd.R_Id"> Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</p>

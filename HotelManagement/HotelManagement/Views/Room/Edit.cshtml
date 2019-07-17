@@ -1,0 +1,22 @@
+﻿
+@model HotelManagement.Models.RoomDetail
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    <p>Update details</p>
+
+    @Html.TextBoxFor(model => model.R_Id)
+
+    @Html.DropDownListFor(model => model.RoomType, new List<SelectListItem>
+                   { new SelectListItem{Text="Standard", Value="Standard"},
+                     new SelectListItem{Text="Premium", Value="Premium"},
+                     new SelectListItem{Text="Delux", Value="Delux"}}, "Please select")
+
+
+
+    <input type="submit" value="Save changes" />
+}

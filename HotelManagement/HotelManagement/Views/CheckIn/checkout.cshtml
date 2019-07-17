@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "checkout";
+}
+
+<h2>checkout</h2>
+@TempData["bill"]
+@foreach (var item in TempData["bill"] as IList<HotelManagement.Models.Checkin>)
+        {
+@Html.Display(bill)
+}

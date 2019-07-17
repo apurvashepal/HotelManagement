@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@model HotelManagement.Models.RoomDetail
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Room", FormMethod.Post))
+{
+    <p>Add a room:</p>
+
+    <p>RoomID</p><br />  @Html.TextBoxFor(model => model.R_Id)
+
+    @Html.DropDownListFor(model => model.RoomType, new List<SelectListItem>
+                   { new SelectListItem{Text="Standard", Value="Standard"},
+                     new SelectListItem{Text="Premium", Value="Premium"},
+                     new SelectListItem{Text="Delux", Value="Delux"}}, "Please select")
+
+
+
+    <input type="submit" value="Savedata" />
+
+
+}
