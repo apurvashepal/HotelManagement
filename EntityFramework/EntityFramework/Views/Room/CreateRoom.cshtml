@@ -1,0 +1,18 @@
+﻿@model EntityFramework.Models.RoomDetail
+@{
+    ViewBag.Title = "CreateRoom";
+}
+
+<h2>CreateRoom</h2>
+@Html.BeginForm("CreateRoom", "Room", FormMethod.Post))
+{
+<p>Add a room:</p>
+<p>RoomID</p><br /> @Html.TextBoxFor(model=> model.R_Id)
+
+@Html.DropDownListFor(model => model.RoomType, new List<SelectListItem>
+                   { new SelectListItem{Text="Standard", Value="Standard"},
+                     new SelectListItem{Text="Premium", Value="Premium"},
+                     new SelectListItem{Text="Delux", Value="Delux"}}, "Please select")
+<input type="submit" value="Savedata" />
+
+}
