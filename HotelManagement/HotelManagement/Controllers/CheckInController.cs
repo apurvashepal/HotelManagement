@@ -16,8 +16,8 @@ namespace HotelManagement.Controllers
         // GET: /CheckIn/
         public EmployeeEntities1 db = new EmployeeEntities1();
      
-        public       RoomDetail rd = new RoomDetail();
-        public int bill;
+        public  RoomDetail rd = new RoomDetail();
+      
        
         
         int Available_Rooms;
@@ -29,9 +29,12 @@ namespace HotelManagement.Controllers
             return View();
         }
 
-        public ActionResult checkin(FormCollection form)
-        {
 
+
+          [Authorize] 
+       public ActionResult CheckIn(FormCollection form)
+        {
+            
             Checkin cm = new Checkin();
             EmployeeEntities1 EE = new EmployeeEntities1();
             List<Checkin> RList = EE.Checkins.ToList();
@@ -44,13 +47,13 @@ namespace HotelManagement.Controllers
             string RoomType = form["RoomType"];
             cm.quantity = Convert.ToInt32(form["quantity"]);
             cm.Total_days = Convert.ToInt32(form["Total_days"]);
-   
+    
        
 
             if (rd.RoomType == "Standard" && cm.quantity < Available_Rooms)
             {
                Available_Rooms  = Available_Rooms - cm.quantity;
-              bill = cm.quantity * 1000;
+               cm.bill = cm.quantity * 1000 * cm.Total_days;
 
             }
             else
@@ -60,7 +63,7 @@ namespace HotelManagement.Controllers
             if (rd.RoomType == "Premium" && cm.quantity < Available_Rooms)
             {
                 Available_Rooms = Available_Rooms - cm.quantity;
-              bill = cm.quantity * 2000;
+                cm.bill = cm.quantity * 2000 * cm.Total_days;
             }
             else
                 Response.AppendToLog("Rooms quantity not available");
@@ -68,7 +71,7 @@ namespace HotelManagement.Controllers
             if (rd.RoomType == "Delux" && cm.quantity < Available_Rooms)
             {
                 Available_Rooms = Available_Rooms - cm.quantity;
-                bill = cm.quantity * 1000;
+                cm.bill= cm.quantity * 1000*cm.Total_days;
             }
             else
             {
@@ -120,8 +123,13 @@ namespace HotelManagement.Controllers
             return View(RList);
             
         }
+        public ActionResult CheckOut(int Id)
+        {    
 
-        public ActionResult checkout(Checkin cm)
+            return View();
+        }
+
+        public ActionResult CheckOut(Checkin cm)
         {
 
 
@@ -133,10 +141,12 @@ namespace HotelManagement.Controllers
 
             RedirectToAction("ViewDetails");
             Available_Rooms = Available_Rooms + cm.quantity;
-            TempData["bill"] = bill;
+            TempData["bill"] = cm.bill;
             return View();
 
         }
+      
+        
 
     }
 }

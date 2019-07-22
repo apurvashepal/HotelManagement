@@ -30,11 +30,12 @@
                 <td>@Html.DisplayFor(modelItem => item.contact)</td>
                 <td>@Html.DisplayFor(modelItem => item.address)</td>
              
-               
                 <td>
                     @Html.DisplayFor(modelItem => item.quantity)
                 </td>
                 <td>@Html.DisplayFor(modelItem => item.Total_days)</td>
+                <td>@Html.DisplayFor(modelItem => item.bill) </td >
+                <td><a href="http://localhost:51709/CheckIn/CheckOut?Id=@item.BookingId" >CheckOut</a></td>
             </tr>
         }
     </table>

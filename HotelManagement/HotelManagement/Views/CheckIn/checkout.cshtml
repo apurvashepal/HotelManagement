@@ -1,10 +1,12 @@
-﻿@{
+﻿@model HotelManagement.Models.Checkin
+           @using HotelManagement.Models
+{
+@{
     ViewBag.Title = "checkout";
 }
 
 <h2>checkout</h2>
-@TempData["bill"]
-@foreach (var item in TempData["bill"] as IList<HotelManagement.Models.Checkin>)
-        {
-@Html.Display(bill)
+<h4>
+    Yourbill Amount : @Html.DisplayForModel(Model.bill) 
+</h4>
 }

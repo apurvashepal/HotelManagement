@@ -37,7 +37,11 @@ namespace HotelManagement.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                if (model.UserName == "Admin")
+
+                    return RedirectToLocal(returnUrl);
+                else
+                    Console.WriteLine("Only Admin Has This Access");
             }
 
             // If we got this far, something failed, redisplay form
@@ -328,6 +332,10 @@ namespace HotelManagement.Controllers
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
+
+        
+        
+        
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {

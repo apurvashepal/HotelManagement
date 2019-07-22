@@ -21,5 +21,6 @@ namespace HotelManagement.Models
         public int quantity { get; set; }
         public System.DateTime dt { get; set; }
         public int Total_days { get; set; }
+        public double bill { get; set; }
     }
 }

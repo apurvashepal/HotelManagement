@@ -378,9 +378,10 @@
     <Content Include="Views\Room\Create.cshtml" />
     <Content Include="Views\Room\Viewdetails.cshtml" />
     <Content Include="Views\Room\Edit.cshtml" />
-    <Content Include="Views\CheckIn\checkin.cshtml" />
+    <Content Include="Views\CheckIn\ChekIn.cshtml" />
     <Content Include="Views\CheckIn\Viewchekin.cshtml" />
-    <Content Include="Views\CheckIn\checkout.cshtml" />
+    <Content Include="Views\CheckIn\CheckOut.cshtml" />
+    <Content Include="Views\CheckIn\CheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

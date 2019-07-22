@@ -7,17 +7,16 @@
 
 <h2>checkin</h2>
 <h2>checkin</h2>
-@using (Html.BeginForm("checkin", "Checkin", FormMethod.Post))
+@using (Html.BeginForm())
 {
-     <p>BookingId</p>
-      @Html.TextBoxFor(model => model.BookingId)
+
     <p>Guestname</p>
-   
-   
+
+
     @Html.TextBoxFor(model => model.GuestName) <br />
-   <p> Contact number</p> 
+    <p> Contact number</p>
     @Html.TextBoxFor(model => model.contact)<br />
-     <p>Address</p>
+    <p>Address</p>
     @Html.TextBoxFor(model => model.address)<br />
     <p>Number of rooms Required</p>
     @Html.TextBoxFor(model => model.quantity)<br />
@@ -27,16 +26,16 @@
 }
 
 <select name="RoomType">
-   
-    <option  value='Standard'>Standard</option>
+
+    <option value='Standard'>Standard</option>
     <option value='Premium'>Premium</option>
     <option value='Delux'>Delux</option>
-   
+
 
 </select>
-    
 
 
-    <input type="submit" value="Savedata" />
+
+<input type="submit" value="Savedata" />
 
 <a href="http://localhost:51709/CheckIn/Viewchekin">View check in</a>

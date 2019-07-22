@@ -29,7 +29,7 @@ namespace HotelManagement.Controllers
             RoomDetail rm = new RoomDetail();
 
             rm.RoomType = form["RoomType"];
-            rm.R_Id = Convert.ToInt32(form["R_Id"]);
+           // rm.R_Id = Convert.ToInt32(form["R_Id"]);
 
 
             if (rm.RoomType == "Standard")
